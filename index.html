@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CLASP: Cluster-Level Autonomous Selective Picking Robot for Blueberry Harvesting</title>
+  <meta name="description" content="CLASP: a cluster-level autonomous selective picking robot with a soft active rolling-band gripper (SARB-Gripper) for fresh-market blueberry harvesting. 92% cluster-level success in field trials at ~$3,326 component cost.">
+  <meta name="keywords" content="CLASP, blueberry harvesting, agricultural robotics, soft gripper, rolling-band gripper, selective harvesting, YOLO, Georgia Tech">
+
+  <meta property="og:title" content="CLASP: Cluster-Level Autonomous Selective Picking Robot for Blueberry Harvesting">
+  <meta property="og:description" content="A soft rolling-band gripper with sensorless force regulation and a global-to-local perception pipeline for selective, cluster-level blueberry harvesting.">
+  <meta property="og:image" content="static/images/fig1_hardware.jpg">
+  <meta property="og:type" content="website">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫐</text></svg>">
+</head>
+<body>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            CLASP: A Cluster-Level Autonomous Selective Picking Robot with a Soft Rolling-Band Gripper for Fresh-Market Blueberry Harvesting
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Yixuan Xia<sup>*1</sup>,</span>
+            <span class="author-block">Yilin Cai<sup>*1</sup>,</span>
+            <span class="author-block">Natalia Belen Espinoza<sup>2</sup>,</span>
+            <span class="author-block">Changying Li<sup>3</sup>,</span>
+            <span class="author-block">Zilfina Rubio Ames<sup>2</sup>,</span>
+            <span class="author-block">Xin Zhang<sup>2</sup>,</span>
+            <span class="author-block">Yue Chen<sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Georgia Institute of Technology,</span>
+            <span class="author-block"><sup>2</sup>University of Georgia,</span>
+            <span class="author-block"><sup>3</sup>University of Florida</span>
+          </div>
+          <div class="is-size-6 publication-authors equal-contrib">
+            <sup>*</sup>Equal contribution
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF -->
+              <span class="link-block">
+                <a href="static/paper/CLASP_arXiv_2609.18051v1.pdf" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2609.18051" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video -->
+              <span class="link-block">
+                <a href="#video" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code -->
+              <span class="link-block">
+                <a href="https://github.com/StopHere1/autonomous_blueberry_harvester" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Dataset -->
+              <span class="link-block">
+                <a href="https://app.roboflow.com/clasp-workspace/clasp_training_dataset/1" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+                  <span class="icon"><i class="fas fa-database"></i></span>
+                  <span>Data</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TEASER ============================ -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/fig1_hardware.jpg" alt="CLASP hardware: (a) prototype in the field, (b) CAD model, (c) gripper with three-DOF wrist, (d) exploded finger unit, (e) electronics" class="teaser-image">
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">CLASP</span> is a low-cost 6-DOF harvesting robot whose <b>soft active rolling-band gripper</b>
+        pulls ripe blueberries off a cluster in sequence while leaving unripe fruit on the stem &mdash;
+        no per-berry localization, no force/torque sensor.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HEADLINE NUMBERS ============================ -->
+<section class="section stats-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-multiline stat-row">
+      <div class="column is-3 has-text-centered">
+        <div class="stat-number">92%</div>
+        <div class="stat-label">cluster-level grasp success<br>(23 / 25 field attempts)</div>
+      </div>
+      <div class="column is-3 has-text-centered">
+        <div class="stat-number">3.7&times;</div>
+        <div class="stat-label">detachment-force ratio<br>immature vs. mature berries</div>
+      </div>
+      <div class="column is-3 has-text-centered">
+        <div class="stat-number">&le;3.7%</div>
+        <div class="stat-label">pulling-force repeatability<br>from servo current alone</div>
+      </div>
+      <div class="column is-3 has-text-centered">
+        <div class="stat-number">$3,326</div>
+        <div class="stat-label">total component cost<br>of the platform</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ DEMO VIDEO (placeholder) ============================ -->
+<section class="hero is-light is-small" id="video">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3 has-text-centered">Demo Video</h2>
+          <!--
+            TODO: replace the placeholder block below with the real video. Either
+              <div class="publication-video">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+            or, for a local file,
+              <video class="demo-video" controls muted playsinline poster="static/images/fig9_field.jpg">
+                <source src="static/videos/clasp_demo.mp4" type="video/mp4">
+              </video>
+          -->
+          <div class="video-placeholder">
+            <div class="video-placeholder-inner">
+              <span class="icon is-large"><i class="fas fa-circle-play fa-3x"></i></span>
+              <p class="placeholder-title">Demo video coming soon</p>
+              <p class="placeholder-sub">Full autonomous harvest cycle: global scan &rarr; approach &rarr; force-regulated rolling detachment &rarr; release.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABSTRACT ============================ -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Fresh-market blueberries require selective, gentle picking, which is labor-intensive and expensive.
+            Over-the-row machine harvesters are fast but non-selective, bruising mixed-ripeness fruit and limiting
+            yield to the processing market. Selective robotic harvesters typically target individual fruits rather
+            than fruit clusters, which limits harvesting efficiency for small, densely clustered blueberries.
+          </p>
+          <p>
+            This paper presents <b>CLASP</b>, a Cluster-Level Autonomous Selective Picking robot with a Soft Active
+            Rolling-Band Gripper (<b>SARB-Gripper</b>). Two compliant bands envelop the cluster and roll against the
+            fruit, drawing mature berries off in sequence, while closed-loop regulation of the pulling force keeps
+            the applied load below the immature detachment threshold. A global-to-local perception pipeline pairs
+            an eye-to-hand camera for global cluster detection and target selection with an eye-in-hand camera for
+            local localization and cluster orientation estimation.
+          </p>
+          <p>
+            Field measurements confirm a clear detachment-force separation between mature and immature fruit, and
+            the SARB-Gripper reproduces a commanded pulling force to within 3.7&nbsp;%, enabling selective harvesting
+            at the cluster level. In end-to-end field trials, CLASP autonomously grasped 23 of 25 presented clusters
+            (92&nbsp;%). With a component cost of approximately $3,326 per unit, CLASP offers a scalable approach to
+            selective cluster-level harvesting for fresh-market blueberries.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ GRIPPER ============================ -->
+<section class="section" id="gripper">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">The SARB-Gripper: picking like a human thumb</h2>
+        <div class="content has-text-justified">
+          <p>
+            Human pickers rub several berries at once against the supporting stem with their thumb and catch the
+            fruit in their palm: ripe berries let go under the load, unripe berries stay attached. The SARB-Gripper
+            reproduces this motion with two fingers, each carrying a soft Dragon Skin 20 silicone band driven by its
+            own Dynamixel XC330 servo. The fingers close around a cluster through four-bar linkages, the bands roll,
+            and friction at the fruit&ndash;band interface detaches berries at the berry&ndash;pedicel junction into a
+            soft net below the gripper.
+          </p>
+        </div>
+        <figure class="figure">
+          <img src="static/images/fig2_gripper.jpg" alt="Gripper workflow: human picker inspiration, finger-closure movements and harvesting mechanism, and the grasping workflow">
+          <figcaption>
+            (a) Inspiration from a human picker; (b) finger closure and rolling-band detachment mechanism;
+            (c) the grasping workflow: standby &rarr; approach &rarr; close + roll &rarr; release.
+          </figcaption>
+        </figure>
+
+        <div class="columns is-centered mt-5">
+          <div class="column is-half">
+            <figure class="figure">
+              <img src="static/images/closedup_gripper.jpg" alt="Close-up photograph of the rolling-band gripper end-effector">
+              <figcaption>The end-effector up close: two grasp fingers, two driven silicone bands, and the eye-in-hand RealSense D435.</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="figure">
+              <img src="static/images/fig8_force.jpg" alt="Gripper force characterization: pulling force vs. servo current offset with berry detaching-force bands, and pulling force over wrist pitch and roll">
+              <figcaption>
+                Pulling force rises smoothly with commanded servo current and saturates, landing inside the
+                0.8&nbsp;N window between mature (0.66&nbsp;&plusmn;&nbsp;0.32&nbsp;N) and immature
+                (2.47&nbsp;&plusmn;&nbsp;0.66&nbsp;N) detachment force. The force is insensitive to wrist pose.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            <b>Sensorless force regulation.</b> Because the finger servos run in current-based position control,
+            motor current rises when a cluster resists closure and serves as a surrogate for contact force. Each
+            finger closes while its window-averaged current sits below an adaptive threshold and backs off slightly
+            when it exceeds it, so the gripper conforms to irregular, off-centre clusters and bounds the load while
+            the bands keep rolling. Harvesting stops when the finger currents return to their unloaded baseline or
+            when the eye-in-hand detector no longer sees mature berries.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PERCEPTION + CONTROL ============================ -->
+<section class="section is-light-bg" id="pipeline">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Global-to-local perception and control</h2>
+        <div class="content has-text-justified">
+          <p>
+            Only 40&nbsp;% of surveyed clusters were visible from a fixed global viewpoint. CLASP therefore localizes
+            coarsely with a ZED&nbsp;2 stereo camera, moves the arm to a kinematically feasible scan pose, and refines
+            with the in-hand RealSense: YOLO26n detections are projected through depth into a cluster point cloud,
+            and the cluster axis is recovered as its leading principal component. Wrist roll then aligns the
+            gripper's transverse axis with the cluster so both bands contact it symmetrically. A full-chain numerical
+            IK, seeded by the closed-form shoulder solution, favours a straight prismatic insertion along the approach
+            direction to limit lateral sweeps through the canopy.
+          </p>
+        </div>
+        <figure class="figure">
+          <img src="static/images/fig4_pipeline.jpg" alt="CLASP autonomous harvesting pipeline: global localization, close-range scanning, grasp orientation planning, joint-space arm control and gripper control">
+          <figcaption>The autonomous harvesting pipeline, coordinated by a finite-state controller.</figcaption>
+        </figure>
+
+        <div class="columns is-centered mt-5">
+          <div class="column is-half">
+            <figure class="figure">
+              <img src="static/images/detection_bush.jpg" alt="Detector output across a full blueberry bush">
+              <figcaption>Detector output across a whole bush &mdash; mature and immature berries boxed separately.</figcaption>
+            </figure>
+          </div>
+          <div class="column is-half">
+            <figure class="figure">
+              <img src="static/images/detection_closeup.jpg" alt="Close-range detector output on a single cluster">
+              <figcaption>Close-range eye-in-hand view, where the mature-berry count drives target selection and termination.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ DATASET ============================ -->
+<section class="section" id="dataset">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Multi-season blueberry detection dataset</h2>
+        <div class="content has-text-justified">
+          <p>
+            We release a 712-image instance-segmentation dataset collected over four growing seasons (2023&ndash;2026)
+            at three research farms in Mississippi and Georgia, spanning four rabbiteye cultivars, five cameras and
+            varying time of day. Berries are annotated individually, including partially occluded instances, as
+            <i>immature</i> or <i>mature</i>. A COCO-pretrained YOLO26n fine-tuned at 1280&nbsp;px reaches
+            mAP<sub>50</sub>&nbsp;=&nbsp;0.767 on the held-out test split (41 berries per image on average) with only
+            3&nbsp;% maturity misclassification.
+          </p>
+        </div>
+        <figure class="figure">
+          <img src="static/images/fig3_dataset.jpg" alt="Dataset configuration: sample gallery, bounding-box annotation examples, and training-set label statistics">
+          <figcaption>(a) Sample gallery; (b) annotation examples; (c) per-class instance counts and normalized box-size distribution.</figcaption>
+        </figure>
+        <p class="has-text-centered mt-4">
+          <a href="https://app.roboflow.com/clasp-workspace/clasp_training_dataset/1" class="button is-rounded is-dark" target="_blank" rel="noopener">
+            <span class="icon"><i class="fas fa-database"></i></span>
+            <span>Download the dataset on Roboflow</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FIELD RESULTS ============================ -->
+<section class="section is-light-bg" id="results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">In the field</h2>
+        <div class="content has-text-justified">
+          <p>
+            Field tests ran on Alapaha, Brightwell and Vernon cultivars with the arm mounted on a Rover Robotics MAX
+            base, at several fixed locations through the day under natural illumination. Of 25 autonomous attempts,
+            23 clusters were grasped (92&nbsp;%); both failures were approach errors, not gripper failures. With the
+            gripper manually aligned, it picked 32 berries per minute against 55 for a human picker. Autonomously
+            harvested fruit measured 15&nbsp;% lower firmness than hand-picked fruit &mdash; an upper bound that
+            includes a longer post-harvest interval, and one that compares favourably with the 16&ndash;26&nbsp;%
+            severe-bruising rates of over-the-row mechanical harvesters.
+          </p>
+        </div>
+        <figure class="figure">
+          <img src="static/images/fig9_field.jpg" alt="Field demonstration of the autonomous harvesting workflow across three nested levels: cluster regions, per-cluster scan/approach/grasp, and gripper closing-and-opening cycles">
+          <figcaption>
+            Field demonstration, read left to right: servicing each detected cluster region (top), scanning,
+            reorienting and grasping each cluster (middle), and repeated close/roll/release cycles until the
+            termination criterion is met (bottom).
+          </figcaption>
+        </figure>
+
+        <div class="columns is-centered mt-5 is-vcentered">
+          <div class="column is-two-fifths">
+            <figure class="figure">
+              <img src="static/images/infield_hardware.jpg" alt="CLASP on its tracked base beside a blueberry bush, arm extended with the collection net deployed">
+              <figcaption>CLASP working a commercial blueberry row, arm extended with the collection net.</figcaption>
+            </figure>
+          </div>
+          <div class="column is-three-fifths">
+            <figure class="figure">
+              <img src="static/images/fig6_workspace.jpg" alt="Reachable workspace of the harvest point coloured by orientation dexterity, with achievable orientation sets at three positions">
+              <figcaption>
+                Reachable workspace (1.56&nbsp;m<sup>3</sup>) coloured by grasp-orientation dexterity &rho;(P):
+                the share of cluster-axis directions the gripper can align with at each point. Median 31&nbsp;%;
+                89&nbsp;% of the volume exceeds 20&nbsp;%.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PAPER ============================ -->
+<section class="section" id="paper">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Paper</h2>
+        <div class="columns is-vcentered">
+          <div class="column is-one-third has-text-centered">
+            <a href="static/paper/CLASP_arXiv_2609.18051v1.pdf" target="_blank" rel="noopener">
+              <img src="static/images/paper_page1.jpg" alt="First page of the CLASP paper" class="paper-thumb">
+            </a>
+          </div>
+          <div class="column">
+            <p class="paper-title">CLASP: A Cluster-Level Autonomous Selective Picking Robot with a Soft Rolling-Band Gripper for Fresh-Market Blueberry Harvesting</p>
+            <p class="paper-meta">Yixuan Xia*, Yilin Cai*, Natalia Belen Espinoza, Changying Li, Zilfina Rubio Ames, Xin Zhang, Yue Chen</p>
+            <p class="paper-meta">arXiv:2609.18051 [cs.RO], 2026</p>
+            <div class="buttons mt-4">
+              <a href="static/paper/CLASP_arXiv_2609.18051v1.pdf" class="button is-rounded is-dark" target="_blank" rel="noopener">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span><span>PDF</span>
+              </a>
+              <a href="https://arxiv.org/abs/2609.18051" class="button is-rounded is-dark" target="_blank" rel="noopener">
+                <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BIBTEX ============================ -->
+<section class="section is-light-bg" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@article{xia2026clasp,
+  author  = {Xia, Yixuan and Cai, Yilin and Espinoza, Natalia Belen and Li, Changying and Rubio Ames, Zilfina and Zhang, Xin and Chen, Yue},
+  title   = {{CLASP}: A Cluster-Level Autonomous Selective Picking Robot with a Soft Rolling-Band Gripper for Fresh-Market Blueberry Harvesting},
+  journal = {arXiv preprint arXiv:2609.18051},
+  year    = {2026},
+}</code></pre>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="static/paper/CLASP_arXiv_2609.18051v1.pdf" target="_blank" rel="noopener" aria-label="Paper PDF">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://arxiv.org/abs/2609.18051" target="_blank" rel="noopener" aria-label="arXiv">
+        <i class="ai ai-arxiv"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/StopHere1/autonomous_blueberry_harvester" target="_blank" rel="noopener" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Supported by the Georgia Tech IRIM seed grant and the USDA-NIFA National Robotics Initiative Award
+            2022-11065 in collaboration with the National Science Foundation.
+          </p>
+          <p>
+            This website is adapted from the
+            <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page
+            (via <a href="https://paper-website.github.io/" target="_blank" rel="noopener">paper-website</a>) and is licensed under a
+            <a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

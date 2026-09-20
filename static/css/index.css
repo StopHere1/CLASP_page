@@ -1,0 +1,277 @@
+/* Adapted from the Nerfies project page stylesheet (CC BY-SA 4.0). */
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+  margin: 0 8px;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+  font-weight: 700;
+}
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.teaser-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-banner {
+  max-height: parent;
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+  padding-top: 1rem;
+}
+
+.publication-title {
+  font-size: 2.35rem !important;
+  line-height: 1.2;
+  margin-bottom: 1.25rem !important;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors .author-block {
+  display: inline-block;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors sup {
+  font-size: 0.7em;
+}
+
+.equal-contrib {
+  color: #6b6b6b;
+  margin-top: 0.35rem;
+}
+
+.publication-links {
+  margin-top: 0.75rem;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.demo-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* --- demo video placeholder ------------------------------------------ */
+.video-placeholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  border: 2px dashed #b5b5b5;
+  background:
+    repeating-linear-gradient(45deg, transparent, transparent 12px,
+      rgba(0, 0, 0, 0.035) 12px, rgba(0, 0, 0, 0.035) 13px),
+    #f2f2f2;
+  display: grid;
+  place-items: center;
+  color: #4a4a4a;
+}
+
+.video-placeholder-inner {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  max-width: 44ch;
+}
+
+.video-placeholder .icon {
+  color: #363636;
+  margin-bottom: 0.5rem;
+}
+
+.placeholder-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+
+.placeholder-sub {
+  font-size: 0.95rem;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+/* --- headline numbers -------------------------------------------------- */
+.stats-section {
+  padding-top: 0;
+  padding-bottom: 2.5rem;
+}
+
+.stat-row {
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  padding: 0.75rem 0;
+}
+
+.stat-number {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #363636;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #6b6b6b;
+  line-height: 1.35;
+  margin-top: 0.25rem;
+}
+
+/* --- figures ----------------------------------------------------------- */
+.figure {
+  margin: 0;
+}
+
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.figure figcaption {
+  font-size: 0.9rem;
+  color: #6b6b6b;
+  text-align: left;
+  margin-top: 0.6rem;
+  line-height: 1.45;
+}
+
+.is-light-bg {
+  background-color: #f5f5f5;
+}
+
+/* --- paper card -------------------------------------------------------- */
+.paper-thumb {
+  max-width: 240px;
+  width: 100%;
+  border: 1px solid #dbdbdb;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease;
+}
+
+.paper-thumb:hover {
+  transform: translateY(-3px);
+}
+
+.paper-title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+.paper-meta {
+  color: #6b6b6b;
+  margin-bottom: 0.25rem;
+}
+
+/* --- misc -------------------------------------------------------------- */
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+.slider-pagination .slider-page {
+  background: #000000;
+}
+
+.eql-cntrb {
+  font-size: smaller;
+}
+
+#BibTeX pre {
+  font-size: 0.85rem;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .publication-title {
+    font-size: 1.7rem !important;
+  }
+  .stat-number {
+    font-size: 1.9rem;
+  }
+}
