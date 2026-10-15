@@ -13,19 +13,47 @@ via [paper-website](https://paper-website.github.io/).
 | --- | --- |
 | `index.html` | The whole page. Bulma / Font Awesome / Academicons are loaded from CDN; no build step. |
 | `static/css/index.css` | Page styles (Nerfies-derived). |
-| `static/images/` | Paper figures (`fig*.jpg`, extracted from the arXiv PDF) and field photos. |
+| `static/images/` | Paper figures (`fig*.jpg`, extracted from the arXiv PDF), field photos, and the video poster frame. |
 | `static/paper/` | The paper PDF served by the **Paper** button. |
+| `static/videos/` | The demo video (`clasp_demo.mp4`). |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is instead of running Jekyll. |
 
-## Adding the demo video
+## The demo video
 
-`index.html` has a hatched **Demo video coming soon** placeholder in the `#video`
-section. The HTML comment directly above it gives the two drop-in replacements:
+`static/videos/clasp_demo.mp4` (43 MB, 1280×720, 3:31) is played by the `<video>`
+element in the `#video` section, with `static/images/demo_poster.jpg` as its poster.
 
-- a YouTube embed (`<div class="publication-video"><iframe …></iframe></div>`), or
-- a local file (`<video class="demo-video" …>` pointing at `static/videos/clasp_demo.mp4`).
+**Size matters here.** GitHub refuses any file over 100 MB and warns above 50 MB, and
+every version you commit stays in the repo's history forever. The source recording was
+245 MB, so it was re-encoded down with ffmpeg:
 
-Delete the `.video-placeholder` block once the real video is in.
+```bash
+ffmpeg -i source.mp4 -c:v libx264 -preset veryslow -crf 32 \
+  -profile:v high -level 4.0 -pix_fmt yuv420p \
+  -vf "hqdn3d=4:4:9:9,scale=1280:-2" \
+  -c:a aac -b:a 96k -ac 2 -movflags +faststart \
+  static/videos/clasp_demo.mp4
+```
+
+- `-crf` is the quality dial: lower is better and bigger (23 ≈ visually lossless, 32 is
+  what we used, 34+ starts to soften small on-screen text). Re-run with a different
+  value to trade size against quality.
+- `hqdn3d` denoises — field foliage is grainy and grain is expensive to encode.
+- `+faststart` moves the index to the front of the file so playback can begin before
+  the whole file downloads.
+
+To regenerate the poster frame (frame 4500 here — pick any frame you like):
+
+```bash
+ffmpeg -i static/videos/clasp_demo.mp4 -vf "select=eq(n\,4500)" -frames:v 1 -q:v 3 static/images/demo_poster.jpg
+```
+
+### Using YouTube instead
+
+If the video grows or you want adaptive streaming, upload it to YouTube and replace the
+`<video>` element with the embed given in the HTML comment just above it. That drops the
+43 MB from the repo entirely. The `.video-placeholder` CSS class is still in
+`static/css/index.css` if you ever need the "coming soon" box back.
 
 ## Publishing
 
